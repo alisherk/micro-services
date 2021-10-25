@@ -1,0 +1,19 @@
+import request from 'supertest';
+import { app } from '../../app';
+
+const createTicket = async () => {
+  return request(app)
+    .post('/api/tickets')
+    .set('Cookie', global.signup())
+    .send({ title: 'djdjdjd', price: '20' });
+};
+
+it('can get all tickets', async () => {
+  await createTicket();
+  await createTicket();
+  await createTicket();
+
+  const response = await request(app).get('/api/tickets').send().expect(200);
+
+  expect(response.body.length).toEqual(3);
+});
