@@ -21,7 +21,6 @@ jobs:
       - run: docker push alisher83/auth
       - uses: digitalocean/action-doctlt@v2
         with: 
-          token: 
-            token: ${{ secrets.DO_ACCESS_TOKEN }}
+          token: ${{ secrets.DO_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save k8s-1-21-5-do-0-nyc1-1635545928792
       - run: kubectl rollout restart deployment auth-depl 
