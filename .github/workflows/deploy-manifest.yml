@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps: 
       - uses: actions/checkout@v2
-      - uses: digitalocean/action-doctlt@v2
+      - uses: digitalocean/action-doctl@v2
         with: 
           token: ${{ secrets.DO_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save k8s-1-21-5-do-0-nyc1-1635545928792
